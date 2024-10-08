@@ -1,5 +1,4 @@
-
-# Проект по автоматизации тестовых сценариев для сайта компании IBS
+# Проект по автоматизации тестовых сценариев для сайта компании T1
 ## <img width="40" height="40" style="vertical-align:middle" title="Folder" src="media/images/yellow-computer-folder.png"> Содержание:
 
 - <a href="#stech">Используемый стек технологий и инструментов</a>
@@ -15,55 +14,37 @@
 <a id="stech"></a>
 ## <img width="40" height="40" style="vertical-align:middle" title="Folder" src="media/images/programm.jpg"> Используемый стек технологий и инструментов
 
-| Java                                                    | IntelliJ  <br>  Idea                                            | GitHub                                                    | JUnit 5                                                   | Gradle                                                    | Selenide                                                    | Selenoid                                                    | Allure<br/>Report                                                | Allure <br> TestOps                                               | Jenkins                                                    | Jira                                                    |                                                    Telegram |
-|:--------------------------------------------------------|-----------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------:|
-| <img height="50" src="media/logo/Java.svg" width="50"/> | <img height="50" src="media/logo/Intelij_IDEA.svg" width="50"/> | <img height="50" src="media/logo/GitHub.svg" width="50"/> | <img height="50" src="media/logo/JUnit5.svg" width="50"/> | <img height="50" src="media/logo/Gradle.svg" width="50"/> | <img height="50" src="media/logo/Selenide.svg" width="50"/> | <img height="50" src="media/logo/Selenoid.svg" width="50"/> | <img height="50" src="media/logo/Allure_Report.svg" width="50"/> | <img height="50" src="media\logo\Allure_TestOps.svg" width="50"/> | <img height="50" src="media/logo/Jenkins.svg" width="50"/> | <img height="50" src="media/logo/Jira.svg" width="50"/> | <img height="50" src="media\logo\Telegram.svg" width="50"/> |
+| Python                                                    | Pycharm                                                    | GitHub                                                    | Pytest                                                    | Selenide                                                    | Selen                                                      | Allure<br/>Report                                                | Allure <br> TestOps                                               | Jenkins                                                    | Jira                                                    |                                                    Telegram |
+|:----------------------------------------------------------|------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|-------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------:|
+| <img height="50" src="media/logo/Python.png" width="50"/> | <img height="50" src="media/logo/Pycharm.png" width="50"/> | <img height="50" src="media/logo/GitHub.svg" width="50"/> | <img height="50" src="media/logo/Pytest.png" width="50"/> | <img height="50" src="media/logo/Selenide.png" width="50"/> | <img height="50" src="media/logo/Selene.png" width="50"/>  | <img height="50" src="media/logo/Allure_Report.svg" width="50"/> | <img height="50" src="media\logo\Allure_TestOps.svg" width="50"/> | <img height="50" src="media/logo/Jenkins.svg" width="50"/> | <img height="50" src="media/logo/Jira.svg" width="50"/> | <img height="50" src="media\logo\Telegram.svg" width="50"/> |
 
 
 <a id="chek"></a> 
 ##  <img width="40" height="40" style="vertical-align:middle" title="List" src="media/images/todo.png"> Реализованные проверки
 - Проверка открытия нужного сайта
-- Проверка языка сайта
-- Проверка контактов одного из филиалов компании
-- Проверка гамбургер-меню сайта
-- Проверка наличия строки поиска
-- Проверка наличия адресов социальных сетей
+- Проверка контента хедера
+- Проверка поиска
+- Проверка обратной связи
+- Проверка информации о холдинге
+- Проверка информации о пресс-центре
 
 <a id="engine"></a> 
 ## <img width="40" height="40" style="vertical-align:middle" title="Play" src="media/images/play.jpg"> Запуск автотестов
 
 
-### Запуск тестов из терминала локально:
-```
-gradle clean ibs_test 
-```
 ### Запуск тестов из терминала удаленно (Selenoid): 
-```      
-gradle clean test -Denv=main
 ```
-### Запуск тестов c параметрами по умолчанию в Jenkins:  
-```
-clean main ibs_test
+SELENOID_LOGIN=user1
+SELENOID_PASS=1234
+SELENOID_URL=selenoid.autotests.cloud      
 ```
 ### Запуск тестов c задаными параметрами в Jenkins:   
 ```   
-clean main ibs_test
--Denvironment=${ENVIRONMENT}
--Dbrowser=${BROWSER}
--DbrowserVersion=${BROWSER_VERSION}
--DbrowserSize=${BROWSER_SIZE}
--DbrowserBaseUrl=${BASE_URL}
--DbrowserRemoteUrl=${REMOTE_URL}
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest .
 ```
-#### Обозначение ключей параметров:
-- ENVIRONMENT - окружение, на котором будут запускаться тесты. По умолчанию - prod.     
-- BROWSER - браузер, в котором будут запускаться тесты. По умолчанию - Google chrome.          
-- BROWSER_VERSION - версия браузера, в котором будут запускаться тесты. По умолчанию - 100.0.
-- BROWSER_SIZE - размер окна барузера, в котором будут запускаться тесты. По умолчанию - 1920x1080.    
-- BASE_URL - адрес проверяемого ресурса, на котором будут запускаться тесты. По умолчанию - https://ibs.ru/. 
-- REMOTE_URL - адрес удаленного сервера, на котором будет запускаться браузер и тесты проверямого ресурса. По умолчанию - https://user1:1234@selenoid.autotests.cloud/wd/hub. 
-                       
-
 <a id="build"></a> 
 ## <img width="40" height="40" style="vertical-align:middle" title="Jenkins" src="media/logo/Jenkins.svg"> Сборка в Jenkins
 
@@ -135,5 +116,5 @@ clean main ibs_test
 ## <img width="40" height="40" style="vertical-align:middle" title="Selenoid" src="media/logo/Selenoid.svg"> Видео отчет запуска тестов (Selenoid)
 
 <p align="center">
-  <img title="Selenoid Video" src="media/gifs/IBS.gif">
+  <img title="Selenoid Video" src="media/gifs/T1.gif">
 </p>

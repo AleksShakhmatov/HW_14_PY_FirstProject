@@ -9,9 +9,12 @@ from selene import have, browser
 @allure.feature("Работа элементов сайта")
 @allure.story("Ключевые проверки")
 def test_check_header_content():
-    with allure.step("Окрыть сайт"):
+    @allure.step("Окрыть сайт")
+    def open_main_page():
         browser.open('')
-    with allure.step("Наличие страницы холдинга"):
+
+    @allure.step("Наличие страницы холдинга")
+    def have_page_holding():
         browser.element('[class="b-header__menu"]').should(have.text('Холдинг'))
     with allure.step("Наличие страницы решений"):
         browser.element('[class="b-header__menu"]').should(have.text('Решения'))
